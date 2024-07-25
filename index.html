@@ -7,7 +7,27 @@
     <title>Pokedex</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="container">
+      <nav class="navbar">
+        Pokedex
+      </nav>
+      <main class="main-container">
+        <div class="pokemons-container">
+          <h2>Select Pokemon Type</h2>
+          <div class="grid-container"></div>
+        </div>
+
+        <ul class="pokemon-type-list">
+          <li class="fire-type"></li>
+          <li class="water-type"></li>
+          <li class="electric-type"></li>
+          <li class="ground-type"></li>
+          <li class="ice-type"></li>
+        </ul>
+
+        <div class="selected-pokemon"></div>
+      </main>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

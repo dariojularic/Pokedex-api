@@ -1,0 +1,28 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16vh;
+  background-color: rgb(254, 19, 19);
+  font-size: 64px;
+  font-weight: 900;
+  color: yellow;
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+}
+
+.pokemons-container {
+  width: 75%;
+  height: 84vh;
+  background-color: aqua;
+}
+
+.pokemon-type-list {
+  width: 25%;
+  height: 84vh;
+  background-color: blue;
+}
