@@ -18,7 +18,7 @@
 .pokemons-container {
   width: 75%;
   height: 84vh;
-  /* background-color: aqua; */
+  background-color: aqua;
 }
 
 .pokemon-type-list {
