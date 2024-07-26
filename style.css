@@ -22,7 +22,6 @@ body {
 .pokemons-container {
   width: 75%;
   height: 84vh;
-  background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +30,8 @@ body {
 .pokemon-type-list {
   width: 25%;
   height: 84vh;
-  background-color: blue;
   margin: 0;
+  list-style: none;
 }
 
 .pokemon-list {
