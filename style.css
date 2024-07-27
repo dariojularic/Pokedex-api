@@ -43,6 +43,17 @@ body {
   padding: 0;
 }
 
+.search-pokemon-form {
+  margin-top: 40px;
+  font-size: 32px;
+}
+
+.search-pokemon-input {
+  font-size: 32px;
+  padding-left: 8px;
+  
+}
+
 /* .pokemon-image {
   height: 600px;
   width: 600px;
