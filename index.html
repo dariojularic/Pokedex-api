@@ -13,7 +13,10 @@
       </nav>
       <main class="main-container">
         <div class="pokemons-container">
-          <h2>Select Pokemon Type</h2>
+          <form class="search-pokemon-form" action="">
+            <label for="pokemon">Search Pokemon by Name</label>
+            <input class="search-pokemon-input" type="text" name="pokemon" id="pokemon" >
+          </form>
           <ul class="pokemon-list">
             <li>aeg</li>
             <li>aeg</li>
@@ -33,13 +36,18 @@
           </ul>
         </div>
 
-        <ul class="pokemon-type-list">
-          <li class="fire-type"></li>
-          <li class="water-type"></li>
-          <li class="electric-type"></li>
-          <li class="ground-type"></li>
-          <li class="ice-type"></li>
-        </ul>
+        <div>
+          <h2>Select Pokemon Type</h2>
+          <ul class="pokemon-type-list">
+            <li class="fire-type">
+              <img src="/images/fire.png" alt="">
+            </li>
+            <li class="water-type"></li>
+            <li class="electric-type"></li>
+            <li class="ground-type"></li>
+            <li class="ice-type"></li>
+          </ul>
+        </div>
 
         <div class="selected-pokemon">
           <!-- <img class="pokemon-image" src="" alt=""> -->
