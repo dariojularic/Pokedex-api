@@ -47,3 +47,5 @@ searchForm.addEventListener("submit", (event) => {
     .then(data => console.log(data))
     .catch()
 })
+
+// id, name, height, img, weight, type
