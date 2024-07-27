@@ -18,6 +18,7 @@ searchInput.addEventListener("input", () => searchInputValue = searchInput.value
 
 const getPokemonsByType = async (pokemonType) => {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
+  console.log(response)
   const data = await response.json();
   return data
 }
@@ -29,19 +30,20 @@ const getPokemonsByName = async (pokemonName) => {
 }
 
 // .then(pokemonImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png")
-getPokemons()
-.then(data => data.pokemon.forEach(pokemon => {
-  const html = `<li>
-  <p>${pokemon.pokemon.name}</p>
-  </li>`;
-  pokemonList.insertAdjacentHTML("beforeend", html)
-}))
-.catch()
+// getPokemons()
+// .then(data => data.pokemon.forEach(pokemon => {
+//   const html = `<li>
+//   <p>${pokemon.pokemon.name}</p>
+//   </li>`;
+//   pokemonList.insertAdjacentHTML("beforeend", html)
+// }))
+// .catch()
 
 
 
-searchForm.addEventListener("submit", () => {
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault()
   getPokemonsByName(searchInputValue.toLowerCase())
-    .then()
+    .then(data => console.log(data))
     .catch()
 })
