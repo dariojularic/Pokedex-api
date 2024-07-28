@@ -51,22 +51,22 @@ function displaySelectedPokemon(image, name, height, weight, type, id) {
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
-  selectedPokemon.style.visibility = "visible"
   getPokemonByName(searchInputValue.toLowerCase())
     .then(data => {
-      pokemonImage.src = data.sprites.front_default;
-      pokemonName.textContent = capitalizeFirstLetter(data.name);
-      pokemonHeight.textContent = `${data.height} ft`;
-      pokemonWeight.textContent = `${data.weight} lb`;
-      pokemonType.textContent = capitalizeFirstLetter(data.types[0].type.name);
-      pokemonId.textContent = data.id;
-      overlay.style.visibility = "visible"
-      console.log(data)
+      const image = data.sprites.front_default;
+      const name = capitalizeFirstLetter(data.name);
+      const height = data.height;
+      const weight = data.weight;
+      const type = capitalizeFirstLetter(data.types[0].type.name);
+      const id = data.id;
+      displaySelectedPokemon(image, name, height, weight, type, id);
     })
     .catch()
 })
 
+
 pokemonTypeList.addEventListener("click", (event) => {
+  // napravit funkciju display pokemon names in a list
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {
       // console.log(data)
@@ -87,12 +87,11 @@ pokemonList.addEventListener("click", (event) => {
   const currentSelectedPokemon = event.target.closest("li").querySelector("p");
   getPokemonByName(lowerCaseFirstLetter(currentSelectedPokemon.textContent))
     .then(data => {
-      console.log("currentdata", data)
       const image = data.sprites.front_default
-      const name = data.name
+      const name = capitalizeFirstLetter(data.name)
       const height = data.height;
       const weight = data.weight;
-      const type = data.types[0].type.name;
+      const type = capitalizeFirstLetter(data.types[0].type.name);
       const id = data.id;
       displaySelectedPokemon(image, name, height, weight, type, id)
     })
