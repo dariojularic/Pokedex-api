@@ -11,6 +11,7 @@ const pokemonHeight = selectedPokemon.querySelector(".pokemon-height");
 const pokemonWeight = selectedPokemon.querySelector(".pokemon-weight");
 const pokemonType = selectedPokemon.querySelector(".pokemon-type");
 const pokemonId = selectedPokemon.querySelector(".pokemon-id");
+const overlay = document.querySelector(".overlay");
 
 let searchInputValue = "";
 
@@ -53,6 +54,7 @@ function capitalizeFirstLetter(string) {
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
+  selectedPokemon.style.visibility = "visible"
   getPokemonsByName(searchInputValue.toLowerCase())
     .then(data => {
       console.log(data)
@@ -67,8 +69,14 @@ searchForm.addEventListener("submit", (event) => {
       pokemonWeight.textContent = `${data.weight} lb`;
       pokemonType.textContent = capitalizeFirstLetter(data.types[0].type.name);
       pokemonId.textContent = data.id;
+      overlay.style.visibility = "visible"
     })
     .catch()
+})
+
+overlay.addEventListener("click", () => {
+  overlay.style.visibility = "hidden"
+  selectedPokemon.style.visibility = "hidden";
 })
 
 searchInput.focus()
