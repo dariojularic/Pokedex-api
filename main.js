@@ -47,20 +47,30 @@ const getPokemonsByName = async (pokemonName) => {
 // .catch()
 
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   getPokemonsByName(searchInputValue.toLowerCase())
     .then(data => {
       console.log(data)
+      const name = data.name
+      // name.toUppercase()
+      console.log(capitalizeFirstLetter(name))
+      console.log("name")
+
       pokemonImage.src = data.sprites.front_default;
-      pokemonName.textContent = data.name;
-      pokemonHeight.textContent = data.height;
-      pokemonWeight.textContent = data.weight;
-      pokemonType.textContent = data.types[0].type.name;
+      pokemonName.textContent = capitalizeFirstLetter(data.name);
+      pokemonHeight.textContent = `${data.height} ft`;
+      pokemonWeight.textContent = `${data.weight} lb`;
+      pokemonType.textContent = capitalizeFirstLetter(data.types[0].type.name);
       pokemonId.textContent = data.id;
     })
     .catch()
 })
+
+searchInput.focus()
 
 // id, name, height, img, weight, type

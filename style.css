@@ -61,16 +61,17 @@ body {
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid red;
+  /* border: 1px solid red; */
   border-radius: 16px;
   padding: 16px;
+  background-color: rgba(151, 61, 61, 0.256);
 }
 
 .pokemon-image {
   height: 60%;
   width: 100%;
   object-fit: cover;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 .pokemon-info {
