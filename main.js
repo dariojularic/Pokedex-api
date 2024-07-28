@@ -5,6 +5,13 @@ const pokemonTypeList = document.querySelector(".pokemon-type-list");
 const selectedPokemon = document.querySelector(".selected-pokemon");
 const searchForm = document.querySelector(".search-pokemon-form");
 const searchInput = document.querySelector(".search-pokemon-input");
+const pokemonImage = document.querySelector(".pokemon-image");
+const pokemonName = selectedPokemon.querySelector(".pokemon-name");
+const pokemonHeight = selectedPokemon.querySelector(".pokemon-height");
+const pokemonWeight = selectedPokemon.querySelector(".pokemon-weight");
+const pokemonType = selectedPokemon.querySelector(".pokemon-type");
+const pokemonId = selectedPokemon.querySelector(".pokemon-id");
+
 let searchInputValue = "";
 
 searchInput.addEventListener("input", () => searchInputValue = searchInput.value)
@@ -44,7 +51,15 @@ const getPokemonsByName = async (pokemonName) => {
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   getPokemonsByName(searchInputValue.toLowerCase())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data)
+      pokemonImage.src = data.sprites.front_default;
+      pokemonName.textContent = data.name;
+      pokemonHeight.textContent = data.height;
+      pokemonWeight.textContent = data.weight;
+      pokemonType.textContent = data.types[0].type.name;
+      pokemonId.textContent = data.id;
+    })
     .catch()
 })
 

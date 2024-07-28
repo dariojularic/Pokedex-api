@@ -14,7 +14,7 @@
       <main class="main-container">
         <div class="pokemons-container">
           <form class="search-pokemon-form" action="">
-            <label for="pokemon">Search Pokemon by Name</label>
+            <label for="pokemon">Search Pokemon by Name or ID: </label>
             <input class="search-pokemon-input" type="text" name="pokemon" id="pokemon" >
           </form>
           <ul class="pokemon-list"></ul>
@@ -34,13 +34,27 @@
         </div>
 
         <div class="selected-pokemon">
-          <!-- <img class="pokemon-image" src="" alt=""> -->
-          <p class="name"></p>
-          <p class="name"></p>
-          <p class="name"></p>
-          <p class="name"></p>
-          <p class="name"></p>
+          <img class="pokemon-image" src="" alt="">
+          <div class="pokemon-info">
+            <p>
+              <span>Name: </span><span class="pokemon-name"></span>
+            </p>
+            <p>
+              <span>Height: </span><span class="pokemon-height"></span>
+            </p>
+            <p>
+              <span>Weight: </span><span class="pokemon-weight"></span>
+            </p>
+            <p>
+              <span>Type: </span><span class="pokemon-type"></span>
+            </p>
+            <p>
+              <span>ID: </span><span class="pokemon-id"></span>
+            </p>
+          </div>
         </div>
+
+        <div class="overlay"></div>
       </main>
     </div>
     <script type="module" src="/main.js"></script>

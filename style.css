@@ -51,8 +51,53 @@ body {
 .search-pokemon-input {
   font-size: 32px;
   padding-left: 8px;
-  
+
 }
+
+.selected-pokemon {
+  position: absolute;
+  height: 480px;
+  width: 320px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid red;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.pokemon-image {
+  height: 60%;
+  width: 100%;
+  object-fit: cover;
+  border: 1px solid blue;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 40%;
+  margin: 0;
+  padding-left: 8px;
+  font-weight: 600
+}
+
+.pokemon-info > p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.pokemon-name, .pokemon-height, .pokemon-width, .pokemon-type, .pokemon-id {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
 
 /* .pokemon-image {
   height: 600px;
