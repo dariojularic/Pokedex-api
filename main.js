@@ -31,31 +31,35 @@ const getPokemonsByType = async (pokemonType) => {
   return data
 }
 
-const getPokemonsByName = async (pokemonName) => {
+const getPokemonByName = async (pokemonName) => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
   const data = await response.json();
   return data
 }
 
-// .then(pokemonImage.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png")
-// getPokemons()
-// .then(data => data.pokemon.forEach(pokemon => {
-//   const html = `<li>
-//   <p>${pokemon.pokemon.name}</p>
-//   </li>`;
-//   pokemonList.insertAdjacentHTML("beforeend", html)
-// }))
-// .catch()
-
-
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function lowerCaseFirstLetter(string) {
+  return string.charAt(0).toLowerCase() + string.slice(1)
+}
+
+function displaySelectedPokemon(image, name, height, weight, type, id) {
+  pokemonImage.src = image;
+  pokemonName.textContent = name;
+  pokemonHeight.textContent = `${height} ft`;
+  pokemonWeight.textContent = `${weight} lb`;
+  pokemonType.textContent = type;
+  pokemonId.textContent = id;
+  overlay.style.visibility = "visible"
+  selectedPokemon.style.visibility = "visible"
 }
 
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   selectedPokemon.style.visibility = "visible"
-  getPokemonsByName(searchInputValue.toLowerCase())
+  getPokemonByName(searchInputValue.toLowerCase())
     .then(data => {
       pokemonImage.src = data.sprites.front_default;
       pokemonName.textContent = capitalizeFirstLetter(data.name);
@@ -70,20 +74,38 @@ searchForm.addEventListener("submit", (event) => {
 
 
 pokemonTypeList.addEventListener("click", (event) => {
-  console.log(event.target.closest("li").getAttribute("data-type"))
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {
-      console.log(data)
-      console.log(data.pokemon)
+      // console.log(data)
+      // console.log(data.pokemon)
       // sta je data.pokemon, objekt ili array? kako to vidim?
       data.pokemon.forEach(pokemon => {
-        const html = `<li>
+        const html = `<li class="pokemon-list-item">
                         <p>${capitalizeFirstLetter(pokemon.pokemon.name)}</p>
                       </li>`;
         pokemonList.insertAdjacentHTML("beforeend", html)
       })
     })
     .catch()
+})
+
+pokemonList.addEventListener("click", (event) => {
+  const currentSelectedPokemon = event.target.closest("li").querySelector("p");
+  getPokemonByName(lowerCaseFirstLetter(currentSelectedPokemon.textContent))
+    .then(data => {
+      console.log("currentdata", data)
+      const image = data.sprites.front_default
+      const name = data.name
+      const height = `${data.height} ft`;
+      const weight = `${data.weight} lb`;
+      const type = data.types[0].type.name;
+      const id = data.id;
+      displaySelectedPokemon(image, name, height, weight, type, id)
+    })
+    .catch()
+  // console.log(event.target.closest("li").querySelector("p").textContent)
+  // console.log(event.target.querySelector("p"))
+  displaySelectedPokemon()
 })
 
 overlay.addEventListener("click", () => {
@@ -93,4 +115,3 @@ overlay.addEventListener("click", () => {
 
 searchInput.focus()
 
-// id, name, height, img, weight, type
