@@ -17,13 +17,6 @@ let searchInputValue = "";
 
 searchInput.addEventListener("input", () => searchInputValue = searchInput.value)
 
-
-
-// const pokemonImage = document.querySelector(".pokemon-image");
-
-// search pokemon by type input or by name
-//
-
 const getPokemonsByType = async (pokemonType) => {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
   const data = await response.json();
@@ -68,10 +61,10 @@ searchForm.addEventListener("submit", (event) => {
       pokemonType.textContent = capitalizeFirstLetter(data.types[0].type.name);
       pokemonId.textContent = data.id;
       overlay.style.visibility = "visible"
+      console.log(data)
     })
     .catch()
 })
-
 
 pokemonTypeList.addEventListener("click", (event) => {
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
@@ -79,6 +72,7 @@ pokemonTypeList.addEventListener("click", (event) => {
       // console.log(data)
       // console.log(data.pokemon)
       // sta je data.pokemon, objekt ili array? kako to vidim?
+      pokemonList.innerHTML = "";
       data.pokemon.forEach(pokemon => {
         const html = `<li class="pokemon-list-item">
                         <p>${capitalizeFirstLetter(pokemon.pokemon.name)}</p>
@@ -96,15 +90,13 @@ pokemonList.addEventListener("click", (event) => {
       console.log("currentdata", data)
       const image = data.sprites.front_default
       const name = data.name
-      const height = `${data.height} ft`;
-      const weight = `${data.weight} lb`;
+      const height = data.height;
+      const weight = data.weight;
       const type = data.types[0].type.name;
       const id = data.id;
       displaySelectedPokemon(image, name, height, weight, type, id)
     })
     .catch()
-  // console.log(event.target.closest("li").querySelector("p").textContent)
-  // console.log(event.target.querySelector("p"))
   displaySelectedPokemon()
 })
 
@@ -114,4 +106,3 @@ overlay.addEventListener("click", () => {
 })
 
 searchInput.focus()
-
