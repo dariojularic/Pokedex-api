@@ -20,7 +20,6 @@ searchInput.addEventListener("input", () => searchInputValue = searchInput.value
 const getPokemonsByType = async (pokemonType) => {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
   const data = await response.json();
-  console.log(data)
   return data
 }
 
@@ -49,6 +48,16 @@ function displaySelectedPokemon(image, name, height, weight, type, id) {
   selectedPokemon.style.visibility = "visible"
 }
 
+function displayPokemonsList(data) {
+  pokemonList.innerHTML = "";
+  data.forEach(pokemon => {
+    const html = `<li class="pokemon-list-item">
+                    <p>${capitalizeFirstLetter(pokemon.pokemon.name)}</p>
+                  </li>`;
+    pokemonList.insertAdjacentHTML("beforeend", html)
+  })
+}
+
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   getPokemonByName(searchInputValue.toLowerCase())
@@ -66,19 +75,12 @@ searchForm.addEventListener("submit", (event) => {
 
 
 pokemonTypeList.addEventListener("click", (event) => {
-  // napravit funkciju display pokemon names in a list
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {
       // console.log(data)
       // console.log(data.pokemon)
       // sta je data.pokemon, objekt ili array? kako to vidim?
-      pokemonList.innerHTML = "";
-      data.pokemon.forEach(pokemon => {
-        const html = `<li class="pokemon-list-item">
-                        <p>${capitalizeFirstLetter(pokemon.pokemon.name)}</p>
-                      </li>`;
-        pokemonList.insertAdjacentHTML("beforeend", html)
-      })
+      displayPokemonsList(data.pokemon)
     })
     .catch()
 })
