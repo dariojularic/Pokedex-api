@@ -66,6 +66,8 @@ searchForm.addEventListener("submit", (event) => {
   getPokemonByName(searchInputValue.toLowerCase())
     .then(data => {
       // pogledaj object destructuring
+      console.log(data)
+      // console.log(data)
       const image = data.sprites.front_default;
       const name = capitalizeFirstLetter(data.name);
       const height = data.height;
