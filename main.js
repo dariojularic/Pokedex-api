@@ -19,12 +19,14 @@ searchInput.addEventListener("input", () => searchInputValue = searchInput.value
 
 const getPokemonsByType = async (pokemonType) => {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
-  const data = await response.json();
+  if (response.status !== 200) throw new Error("cannot fetch data")
+    const data = await response.json();
   return data
 }
 
 const getPokemonByName = async (pokemonName) => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+  if (response.status !== 200) throw new Error("cannot fetch data")
   const data = await response.json();
   return data
 }
@@ -70,19 +72,19 @@ searchForm.addEventListener("submit", (event) => {
       const id = data.id;
       displaySelectedPokemon(image, name, height, weight, type, id);
     })
-    .catch()
+    .catch(err => console.log(err.message))
 })
 
 
 pokemonTypeList.addEventListener("click", (event) => {
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {
-      // console.log(data)
-      // console.log(data.pokemon)
+      console.log("data", data)
+      console.log("data.pokemon", data.pokemon)
       // sta je data.pokemon, objekt ili array? kako to vidim?
       displayPokemonsList(data.pokemon)
     })
-    .catch()
+    .catch(err => console.log(err.message))
 })
 
 pokemonList.addEventListener("click", (event) => {
