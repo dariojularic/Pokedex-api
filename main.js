@@ -17,10 +17,11 @@ let searchInputValue = "";
 
 searchInput.addEventListener("input", () => searchInputValue = searchInput.value)
 
+// base url
 const getPokemonsByType = async (pokemonType) => {
   const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
   if (response.status !== 200) throw new Error("cannot fetch data")
-    const data = await response.json();
+  const data = await response.json();
   return data
 }
 
@@ -64,6 +65,7 @@ searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   getPokemonByName(searchInputValue.toLowerCase())
     .then(data => {
+      // pogledaj object destructuring
       const image = data.sprites.front_default;
       const name = capitalizeFirstLetter(data.name);
       const height = data.height;
@@ -106,6 +108,5 @@ pokemonList.addEventListener("click", (event) => {
 overlay.addEventListener("click", () => {
   overlay.style.visibility = "hidden"
   selectedPokemon.style.visibility = "hidden";
+  searchInput.focus()
 })
-
-searchInput.focus()
