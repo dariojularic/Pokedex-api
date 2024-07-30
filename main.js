@@ -68,14 +68,15 @@ searchForm.addEventListener("submit", (event) => {
     .then(data => {
       // pogledaj object destructuring
       console.log(data)
-      // // console.log(data)
-      // const image = data.sprites.front_default;
-      // const name = capitalizeFirstLetter(data.name);
-      // const height = data.height;
-      // const weight = data.weight;
-      // const type = capitalizeFirstLetter(data.types[0].type.name);
-      // const id = data.id;
-      const { sprites.front_default: image, name, height, weight, types[0].type.name: type, id} = data
+      // console.log(data)
+      const image = data.sprites.front_default;
+      const name = capitalizeFirstLetter(data.name);
+      const height = data.height;
+      const weight = data.weight;
+      const type = capitalizeFirstLetter(data.types[0].type.name);
+      const id = data.id;
+
+      // const { sprites: {front_default}, image, name, height, weight, types[0].type.name: type, id} = data
       displaySelectedPokemon(image, name, height, weight, type, id);
     })
     .catch(err => console.log(err.message))
