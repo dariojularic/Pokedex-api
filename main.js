@@ -16,17 +16,18 @@ const overlay = document.querySelector(".overlay");
 let searchInputValue = "";
 
 searchInput.addEventListener("input", () => searchInputValue = searchInput.value)
+const baseUrl = "https://pokeapi.co/api/v2/"
 
 // base url
 const getPokemonsByType = async (pokemonType) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/type/${pokemonType}`);
+  const response = await fetch(baseUrl + `type/${pokemonType}`);
   if (response.status !== 200) throw new Error("cannot fetch data")
   const data = await response.json();
   return data
 }
 
 const getPokemonByName = async (pokemonName) => {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+  const response = await fetch(baseUrl + `pokemon/${pokemonName}`);
   if (response.status !== 200) throw new Error("cannot fetch data")
   const data = await response.json();
   return data
