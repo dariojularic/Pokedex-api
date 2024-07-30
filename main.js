@@ -68,13 +68,14 @@ searchForm.addEventListener("submit", (event) => {
     .then(data => {
       // pogledaj object destructuring
       console.log(data)
-      // console.log(data)
-      const image = data.sprites.front_default;
-      const name = capitalizeFirstLetter(data.name);
-      const height = data.height;
-      const weight = data.weight;
-      const type = capitalizeFirstLetter(data.types[0].type.name);
-      const id = data.id;
+      // // console.log(data)
+      // const image = data.sprites.front_default;
+      // const name = capitalizeFirstLetter(data.name);
+      // const height = data.height;
+      // const weight = data.weight;
+      // const type = capitalizeFirstLetter(data.types[0].type.name);
+      // const id = data.id;
+      const { sprites.front_default: image, name, height, weight, types[0].type.name: type, id} = data
       displaySelectedPokemon(image, name, height, weight, type, id);
     })
     .catch(err => console.log(err.message))
@@ -84,9 +85,6 @@ searchForm.addEventListener("submit", (event) => {
 pokemonTypeList.addEventListener("click", (event) => {
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {
-      console.log("data", data)
-      console.log("data.pokemon", data.pokemon)
-      // sta je data.pokemon, objekt ili array? kako to vidim?
       displayPokemonsList(data.pokemon)
     })
     .catch(err => console.log(err.message))
