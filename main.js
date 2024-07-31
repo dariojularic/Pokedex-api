@@ -69,15 +69,21 @@ searchForm.addEventListener("submit", (event) => {
       // pogledaj object destructuring
       console.log(data)
       // console.log(data)
-      const image = data.sprites.front_default;
-      const name = capitalizeFirstLetter(data.name);
-      const height = data.height;
-      const weight = data.weight;
-      const type = capitalizeFirstLetter(data.types[0].type.name);
-      const id = data.id;
+      // const image = data.sprites.front_default;
+      // const name = capitalizeFirstLetter(data.name);
+      // const height = data.height;
+      // const weight = data.weight;
+      // const type = capitalizeFirstLetter(data.types[0].type.name);
+      // const id = data.id;
 
-      // const { sprites: {front_default}, image, name, height, weight, types[0].type.name: type, id} = data
-      displaySelectedPokemon(image, name, height, weight, type, id);
+      // console.log(image)
+      // console.log(pokemonName)
+      // console.log(height)
+      // console.log(weight)
+      // console.log("ovo", name)
+      // console.log(id)
+      const { sprites: {front_default: image }, name: pokemonName, height, weight, types: [{type: {name}}], id} = data
+      displaySelectedPokemon(image, pokemonName, height, weight, name, id);
     })
     .catch(err => console.log(err.message))
 })
