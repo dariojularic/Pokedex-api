@@ -66,24 +66,8 @@ searchForm.addEventListener("submit", (event) => {
   event.preventDefault()
   getPokemonByName(searchInputValue.toLowerCase())
     .then(data => {
-      // pogledaj object destructuring
-      console.log(data)
-      // console.log(data)
-      // const image = data.sprites.front_default;
-      // const name = capitalizeFirstLetter(data.name);
-      // const height = data.height;
-      // const weight = data.weight;
-      // const type = capitalizeFirstLetter(data.types[0].type.name);
-      // const id = data.id;
-
-      // console.log(image)
-      // console.log(pokemonName)
-      // console.log(height)
-      // console.log(weight)
-      // console.log("ovo", name)
-      // console.log(id)
-      const { sprites: {front_default: image }, name: pokemonName, height, weight, types: [{type: {name}}], id} = data
-      displaySelectedPokemon(image, pokemonName, height, weight, name, id);
+      const { sprites: {front_default: image }, name: pokemonName, height, weight, types: [{type: {name: type}}], id} = data
+      displaySelectedPokemon(image, capitalizeFirstLetter(pokemonName), height, weight, capitalizeFirstLetter(type), id);
     })
     .catch(err => console.log(err.message))
 })
@@ -101,13 +85,8 @@ pokemonList.addEventListener("click", (event) => {
   const currentSelectedPokemon = event.target.closest("li").querySelector("p");
   getPokemonByName(lowerCaseFirstLetter(currentSelectedPokemon.textContent))
     .then(data => {
-      const image = data.sprites.front_default
-      const name = capitalizeFirstLetter(data.name)
-      const height = data.height;
-      const weight = data.weight;
-      const type = capitalizeFirstLetter(data.types[0].type.name);
-      const id = data.id;
-      displaySelectedPokemon(image, name, height, weight, type, id)
+      const { sprites: {front_default: image }, name: pokemonName, height, weight, types: [{type: {name: type}}], id} = data
+      displaySelectedPokemon(image, capitalizeFirstLetter(pokemonName), height, weight, capitalizeFirstLetter(type), id)
     })
     .catch()
   displaySelectedPokemon()
