@@ -126,3 +126,7 @@ li {
   width: 100px;
   height: 100px;
 }
+.type-img > img {
+  width: 100px;
+  height: 100px;
+}
