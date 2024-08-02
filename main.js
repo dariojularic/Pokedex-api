@@ -18,11 +18,10 @@ let searchInputValue = "";
 searchInput.addEventListener("input", () => searchInputValue = searchInput.value)
 const baseUrl = "https://pokeapi.co/api/v2/"
 
-// base url
 const getPokemonsByType = async (pokemonType) => {
   try {
     const response = await fetch(baseUrl + `type/${pokemonType}`);
-    // if (response.status !== 200) throw new Error("cannot fetch data")
+    if (response.status !== 200) throw new Error("cannot fetch data")
     const data = await response.json();
     return data
   } catch (error) {
@@ -33,7 +32,7 @@ const getPokemonsByType = async (pokemonType) => {
 const getPokemonByName = async (pokemonName) => {
   try {
     const response = await fetch(baseUrl + `pokemon/${pokemonName}`);
-    // if (response.status !== 200) throw new Error("cannot fetch data")
+    if (response.status !== 200) throw new Error("cannot fetch data")
     const data = await response.json();
     return data
   } catch (error) {
