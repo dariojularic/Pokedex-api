@@ -80,7 +80,6 @@ searchForm.addEventListener("submit", (event) => {
     .catch(err => console.log(err.message))
 })
 
-
 pokemonTypeList.addEventListener("click", (event) => {
   getPokemonsByType(event.target.closest("li").getAttribute("data-type"))
     .then(data => {

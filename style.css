@@ -134,3 +134,7 @@ li {
   flex-direction: column;
   align-items: center;
 }
+
+.type-heading {
+  font-size: 32px;
+}
