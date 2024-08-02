@@ -32,6 +32,7 @@ body {
   height: 84vh;
   margin: 0;
   list-style: none;
+  padding: 0;
 }
 
 .pokemon-list {
@@ -125,4 +126,11 @@ li {
 .type-img > img {
   width: 100px;
   height: 100px;
+}
+
+.pokemon-type-container {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
