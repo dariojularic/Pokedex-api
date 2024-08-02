@@ -96,7 +96,7 @@ pokemonList.addEventListener("click", (event) => {
       const { sprites: {front_default: image }, name: pokemonName, height, weight, types: [{type: {name: type}}], id} = data
       displaySelectedPokemon(image, capitalizeFirstLetter(pokemonName), height, weight, capitalizeFirstLetter(type), id)
     })
-    .catch()
+    .catch(err => console.log(err.message))
   displaySelectedPokemon()
 })
 
