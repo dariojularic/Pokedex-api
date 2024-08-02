@@ -20,17 +20,25 @@ const baseUrl = "https://pokeapi.co/api/v2/"
 
 // base url
 const getPokemonsByType = async (pokemonType) => {
-  const response = await fetch(baseUrl + `type/${pokemonType}`);
-  if (response.status !== 200) throw new Error("cannot fetch data")
-  const data = await response.json();
-  return data
+  try {
+    const response = await fetch(baseUrl + `type/${pokemonType}`);
+    // if (response.status !== 200) throw new Error("cannot fetch data")
+    const data = await response.json();
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 const getPokemonByName = async (pokemonName) => {
-  const response = await fetch(baseUrl + `pokemon/${pokemonName}`);
-  if (response.status !== 200) throw new Error("cannot fetch data")
-  const data = await response.json();
-  return data
+  try {
+    const response = await fetch(baseUrl + `pokemon/${pokemonName}`);
+    // if (response.status !== 200) throw new Error("cannot fetch data")
+    const data = await response.json();
+    return data
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 function capitalizeFirstLetter(string) {
